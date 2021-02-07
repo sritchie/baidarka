@@ -1,0 +1,91 @@
+* Double Hatch (6.6m) Plans
+
+  Notes!
+
+** Bill of Materials
+
+   Some functions to build up basic units support.
+
+   #+begin_src clojure
+;; Units in cm.
+(defn cm [x]
+  {:value x
+   :units :cm})
+
+(defn in [x]
+  {:value x
+   :units :inch})
+
+(defn tubing [& {:keys [od length] :as m}]
+  {:od od
+   :length length})
+   #+end_src
+
+*** Long Pieces
+
+    These measurements are for the LONG tubing pieces.
+
+    #+begin_src clojure
+(def longitudinal-sections
+  {:keel
+   {:part-id 0
+    :count 1
+    :material (tubing :od 3/4 :length (cm 681.8))}
+
+   :stringer
+   {1 {:count 2
+       :material (tubing :od 1/2 :length (cm 593.3))}
+    2 {:count 2
+       :material (tubing :od 1/2 :length (cm 678.8))}
+    3 {:count 2
+       :material (tubing :od 1/2 :length (cm 676.2))}}
+
+   :gunwale
+   {:part-id 5
+    :count 2
+    :material (tubing :od 3/4 :length (cm 588.5))}
+
+
+   :hatch
+   {:count 2
+    :material (tubing :od 1/2 :length (cm 188.0))}
+
+   :deck
+   {:forward {:count 1
+              :material (tubing :od 1/2 :length (cm 204.9))}
+    :center {:count 1
+             :material (tubing :od 1/2 :length (cm 145.2))}
+    :aft {:count 1
+          :material (tubing :od 1/2 :length (cm 112.0))}}})
+    #+end_src
+
+*** Bulkheads
+
+    These are the lengths required for each section in the bulkheads:
+
+    #+begin_src clojure
+(let [(half-od (partial tubing :od 1/2 :length))]
+  (def stations
+    {2 {:deck (half-od (cm 46.9))
+        :hull (half-od (cm 64.8))}
+
+     ;; Rear hatch area
+     3 {:hull (half-od (cm 100.0))}
+     3.5 {:hull (half-od (cm 102.9))}
+     4 {:hull (half-od (cm 127.25))}
+
+     5 {:deck (half-od (cm 69.7))
+        :hull (half-od (cm 88.9))}
+     6 {:deck (half-od (cm 70.3))
+        :hull (half-od (cm 88.7))}
+
+     ;; Front hatch area
+     7 {:hull (half-od (cm 118.2))}
+     7.5 {:hull (half-od (cm 107.3))}
+     8 {:hull (half-od (cm 117.4))}
+
+     9 {:deck (half-od (cm 50.5))
+        :hull (half-od (cm 66.8))}
+     10 {:deck (half-od (cm 37.2))
+         :hull (half-od (cm 53.1))}}))
+    #+end_src
