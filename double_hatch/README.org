@@ -1,8 +1,37 @@
 * Double Hatch (6.6m) Plans
 
-  Notes!
+  I'll write this in Clojure, so I can introduce functions that automatically
+  bin the pieces into standard lengths of tubing available from some supplier.
+
+  For now, I'll just get the data in here, no generated totals.
 
 ** Bill of Materials
+
+*** Totals from Plans
+
+    [[https://github.com/sritchie/baidarka/blob/e807b9d23c69387d97cc621feda3ce270cf09de2/double_hatch/plans/660%20Sheet%201.pdf][sheet 1]] notes these totals:
+
+    - 60.35m of 1/2" OD, 0.049" wall 6061-T6 tubing for ribs, hatchways, frames,
+      stringers 1,2,3,4
+    - 18.67m of 3/4" OD, 0.049" wall 6061-T6 tubing for keel, gunwales
+    - 4805 cm^2 of 0.063" 6061-T6 sheet
+    - 700 cm^2 of 0.125" 6061-T6 sheet
+    - 600 yards of 45' test braided nylon twine, hollow core (see the PDF for
+      other options)
+    - 3.64m of 3/4" diameter braided nylon or polyester tubing for hatch
+      coamings
+    - 26 oz double-weave nylon fabric, 68", uncoated: 86 ft^2 (Dyson part#
+      26N68)
+    - Neoprene, Hypalon, 4 gallons total (but what split? Seems like mostly
+      neoprene)
+
+   I'll have to do some work to try and pack the various plate shapes into the
+   smallest standard plate piece we can buy. Same problem with the tubing, but
+   easier to solve.
+
+   See below for the tubing breakdown on lengths.
+
+*** Units
 
    Some functions to build up basic units support.
 
